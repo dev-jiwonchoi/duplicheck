@@ -1,6 +1,6 @@
 {
   "name": "duplicheck",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Duplicate Checker for any txt files",
   "main": "duplicheck.js",
   "type": "module",
@@ -8,7 +8,12 @@
     "type": "git",
     "url": "https://github.com/dev-jiwonchoi/duplicheck"
   },
-  "keywords": ["duplicate", "check", "txt", "node"],
+  "keywords": [
+    "duplicate",
+    "check",
+    "txt",
+    "node"
+  ],
   "author": "Jiwon Choi",
   "license": "MIT",
   "dependencies": {}
