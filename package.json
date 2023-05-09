@@ -1,6 +1,6 @@
 {
   "name": "duplicheck",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Duplicate Checker for any txt files",
   "main": "duplicheck.js",
   "type": "module",
