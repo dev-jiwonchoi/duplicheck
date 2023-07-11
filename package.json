@@ -1,6 +1,6 @@
 {
   "name": "duplicheck",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "Get duplicates for any strings, numbers, arrays or objects",
   "main": "dist/duplicheck.js",
   "types": "@types/duplicheck.d.ts",

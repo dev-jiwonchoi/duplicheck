@@ -1,65 +1,55 @@
 # duplicheck
 
-## Description
-
-Duplicate Checker for any txt files
+Retrieve duplicates from strings, numbers, arrays, or objects.
 
 ## Installation
 
 ```bash
 npm install duplicheck
-
-// or
-
-yarn add duplicheck
-```
-
-## Pre-requisites
-
-- Require check-this.txt file in the same directory you are running duplicheck from.
-
-```txt
-// check-this-example.txt
-
-ABCD
-ABCD
-ABCD
-ABCD
-ABCD
-EFGH
-EFGH
-EFGH
-EFGH
-IJKL
-IJKL
-IJKL
-MNOP
-MNOP
-QRST
-UVWX
-YZYZ
 ```
 
 ## Usage
 
-```js
-const duplicheck = require('duplicheck'); // import duplicheck
+#### String
 
-// or
+```ts
+import duplicheck from 'duplicheck'
 
-import duplicheck from 'duplicheck'; // import duplicheck
+const source = 'abcdefg'
+const target = 'abcd'
 
-duplicheck(); // run duplicheck
+const duplicates = duplicheck(source, target) // Output: 'abcd'
 ```
 
-## Output
+#### Number
 
-```txt
-// duplicates-example.txt
+```ts
+import duplicheck from 'duplicheck'
 
-ABCD
-EFGH
-IJKL
-MNOP
+const source = 123456789
+const target = 12345
 
+const duplicates = duplicheck(source, target) // Output: 12345
+```
+
+#### Array
+
+```ts
+import duplicheck from 'duplicheck'
+
+const source = ['a', 'b', 'c', 'd', 'e', 'f', 'g']
+const target = ['a', 'b', 'c', 'd']
+
+const duplicates = duplicheck(source, target) // Output: ['a', 'b', 'c', 'd']
+```
+
+#### Object
+
+```ts
+import duplicheck from 'duplicheck'
+
+const source = { a: 1, b: 2, c: 3, d: 4, e: 5, f: 6 }
+const target = { a: 1, b: 2, c: 3, d: 4 }
+
+const duplicates = duplicheck(source, target) // Output: { a: 1, b: 2, c: 3, d: 4 }
 ```
