@@ -1,16 +1,10 @@
 {
   "name": "duplicheck",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "Get duplicates for any strings, numbers, arrays or objects",
   "main": "dist/duplicheck.js",
+  "types": "@types/duplicheck.d.ts",
   "repository": "https://github.com/dev-jiwonchoi/duplicheck",
-  "keywords": [
-    "duplicate",
-    "check",
-    "javascript",
-    "typescript",
-    "open source"
-  ],
   "author": "Jiwon Choi",
   "license": "MIT",
   "private": false,
@@ -23,5 +17,12 @@
     "jest": "^29.6.1",
     "ts-jest": "^29.1.1",
     "typescript": "^5.1.6"
-  }
+  },
+  "keywords": [
+    "duplicate",
+    "check",
+    "javascript",
+    "typescript",
+    "open source"
+  ]
 }
