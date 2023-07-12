@@ -63,4 +63,51 @@ describe('duplicheck', () => {
     const result = duplicheck(source, target)
     expect(result).toEqual([])
   })
+
+  it('should return the common elements between source and target arrays', () => {
+    const source = [1, 2, 3, { name: 'John' }, [4, 5]]
+    const target = [2, 3, { name: 'John' }, [5, 6]]
+    const result = duplicheck(source, target)
+    expect(result).toEqual([2, 3, { name: 'John' }])
+  })
+
+  // Test case 3
+  it('should handle nested arrays correctly', () => {
+    const source = [1, [3, 4], [4, [6, 7]]]
+    const target = [2, [3, 4], [5, [6, 7]]]
+    const result = duplicheck(source, target)
+    expect(result).toEqual([[3, 4]])
+  })
+
+  // Test case 4
+  it('should handle arrays of objects correctly', () => {
+    const source = [
+      { id: 1, name: 'John' },
+      { id: 2, name: 'Jane' },
+    ]
+    const target = [
+      { id: 2, name: 'Jane' },
+      { id: 3, name: 'Bob' },
+    ]
+    const result = duplicheck(source, target)
+    expect(result).toEqual([{ id: 2, name: 'Jane' }])
+  })
+
+  // Test case 5
+  it('should handle arrays of arrays of objects correctly', () => {
+    const source = [
+      { id: 1, name: 'John' },
+      { id: 2, name: 'Jane' },
+    ]
+    const target = [{ id: 2, name: 'Jane' }, [{ id: 3, name: 'Bob' }]]
+    const result = duplicheck(source, target)
+    expect(result).toEqual([{ id: 2, name: 'Jane' }])
+  })
+
+  it('should handle deeply nested arrays correctly', () => {
+    const source = [1, [2, [3, [4, [5]]]]]
+    const target = [0, [2, [0, [4, [5]]]]]
+    const result = duplicheck(source, target)
+    expect(result).toEqual([])
+  })
 })
