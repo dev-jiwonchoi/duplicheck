@@ -3,12 +3,12 @@ export default function duplicheck(source: any, target: any): any {
     return source
   }
 
-  if (typeof source !== typeof target) {
-    throw new Error('The type of the inputs must be the same')
-  }
-
   if (![source, target].every((obj) => obj !== null && obj !== undefined)) {
     throw new Error('Invalid source or target object')
+  }
+
+  if (typeof source !== typeof target) {
+    throw new Error('The type of the inputs must be the same')
   }
 
   if (typeof source === 'string' && typeof target === 'string') {
@@ -37,7 +37,12 @@ export default function duplicheck(source: any, target: any): any {
         const item2String = JSON.stringify(item2)
 
         if (item1String === item2String) {
-          result.push(item2)
+          result.push(item1)
+        } else if (Array.isArray(item1) && Array.isArray(item2)) {
+          const nestedResult = duplicheck(item1, item2)
+          if (nestedResult.length > 0) {
+            result.push(nestedResult)
+          }
         }
       })
     })

@@ -68,7 +68,7 @@ describe('duplicheck', () => {
     const source = [1, 2, 3, { name: 'John' }, [4, 5]]
     const target = [2, 3, { name: 'John' }, [5, 6]]
     const result = duplicheck(source, target)
-    expect(result).toEqual([2, 3, { name: 'John' }])
+    expect(result).toEqual([2, 3, { name: 'John' }, [5]])
   })
 
   // Test case 3
@@ -76,7 +76,7 @@ describe('duplicheck', () => {
     const source = [1, [3, 4], [4, [6, 7]]]
     const target = [2, [3, 4], [5, [6, 7]]]
     const result = duplicheck(source, target)
-    expect(result).toEqual([[3, 4]])
+    expect(result).toEqual([[3, 4], [4], [[6, 7]]])
   })
 
   // Test case 4
@@ -108,6 +108,20 @@ describe('duplicheck', () => {
     const source = [1, [2, [3, [4, [5]]]]]
     const target = [0, [2, [0, [4, [5]]]]]
     const result = duplicheck(source, target)
-    expect(result).toEqual([])
+    expect(result).toEqual([[2, [[4, [5]]]]])
+  })
+
+  it('should handle deeply nested arrays correctly', () => {
+    const source = [['a', 'b', 'c'], [['d', 'e', 'f'], 'g'], 'h']
+    const target = [['a', 'b'], [['d', 'e', 'f']], 'h', 123]
+    const result = duplicheck(source, target)
+    expect(result).toEqual([['a', 'b'], [['d', 'e', 'f']], 'h'])
+  })
+
+  it('should handle deeply nested arrays correctly', () => {
+    const source = [['a', 'b', 'c'], [['d', 'e', 'f'], 'g'], 'h']
+    const target = [['a', 'b'], ['g'], 'h', 123]
+    const result = duplicheck(source, target)
+    expect(result).toEqual([['a', 'b'], ['g'], 'h'])
   })
 })

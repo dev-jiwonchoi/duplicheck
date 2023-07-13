@@ -59,4 +59,47 @@ describe('duplicheck', () => {
       import: { './src': { './test': './dist/test' } },
     })
   })
+
+  test('', () => {
+    const source: Record<string, any> = {
+      name: 'John',
+      age: 30,
+      address: {
+        street: '123 Main St',
+        city: 'New York',
+        country: 'USA',
+      },
+    }
+    const target: Record<string, any> = {
+      name: 'John',
+      age: 30,
+      address: {
+        street: '456 Elm St',
+        city: 'New York',
+        country: 'USA',
+      },
+    }
+    expect(duplicheck(source, target)).toEqual({
+      name: 'John',
+      age: 30,
+      address: {
+        city: 'New York',
+        country: 'USA',
+      },
+    })
+  })
+
+  test('', () => {
+    const source = { import: './dist/index.js', require: './dist/index.cjs' }
+    const target = {
+      import: './dist/index.js',
+      require: './dist/index.cjs',
+      module: './dist/index.esm.js',
+      types: './dist/types.d.ts',
+    }
+    expect(duplicheck(source, target)).toEqual({
+      import: './dist/index.js',
+      require: './dist/index.cjs',
+    })
+  })
 })

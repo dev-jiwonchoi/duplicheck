@@ -1,7 +1,7 @@
 {
   "name": "duplicheck",
-  "version": "0.1.0",
-  "description": "Get duplicates for any strings, numbers, arrays or objects",
+  "version": "0.1.1",
+  "description": "Get duplicates from any strings, numbers, arrays or objects",
   "main": "./dist/index.cjs",
   "types": "./dist/index.d.ts",
   "repository": "https://github.com/dev-jiwonchoi/duplicheck",
